@@ -30,13 +30,14 @@ import org.jsoup.select.Elements;
 //second thread finds that array and donwload videos and saves the names of files to diffetnty arraylist
 //third thread plays the asounds throuhg virtual audio cable
 
-
 public class Tempo {
 	volatile static ArrayList<String> downloadQueue = new ArrayList<String>();
 	volatile static ArrayList<String> playQueue = new ArrayList<String>();
 	volatile static boolean skip = false;
 	volatile static boolean pause = false;
 	volatile static boolean play = false;
+	
+	static String tempoFolderLocation = "TEMPO FOLDER PATH HERE";
 	
 	public static ArrayList<String> check() throws MessagingException {
 		String email = "EMAIL HERE";
@@ -114,20 +115,20 @@ public class Tempo {
 			latestVersion = a.getElementsByTag("a").first().text();
 		}
 		
-		File file = new File("C:\\Users\\Owner\\Documents\\Code\\Java\\tempo\\dl-version.txt");
+		File file = new File(tempoFolderLocation + "\\dl-version.txt");
 		@SuppressWarnings("resource")
 		Scanner scan = new Scanner(file);
 		currentVersion = scan.nextLine();
 		
 		if (!currentVersion.equals(latestVersion)) {
-			File oldVersion = new File("C:\\Users\\Owner\\Documents\\Code\\Java\\tempo\\youtube-dl.exe");
+			File oldVersion = new File(tempoFolderLocation + "\\youtube-dl.exe");
 			oldVersion.delete();
 			
-			Runtime.getRuntime().exec("cmd /c cd C:\\Users\\Owner\\Documents\\Code\\Java\\tempo && curl -L https://yt-dl.org/downloads/" + latestVersion + "/youtube-dl.exe --output youtube-dl.exe");
+			Runtime.getRuntime().exec("cmd /c cd " + tempoFolderLocation + "  && curl -L https://yt-dl.org/downloads/" + latestVersion + "/youtube-dl.exe --output youtube-dl.exe");
 			while (!oldVersion.exists()) {
 				continue;
 			}
-			FileWriter fileW = new FileWriter("C:\\Users\\Owner\\Documents\\Code\\Java\\tempo\\dl-version.txt");
+			FileWriter fileW = new FileWriter(tempoFolderLocation + "\\dl-version.txt");
 			fileW.write(latestVersion);
 			fileW.close();
 			
@@ -203,7 +204,7 @@ class Download extends Thread{
 				System.out.println("Downloading " + link);
 				//checks the first filename that is free so i dont overwrite
 				while(check) {
-					File file = new File("C:\\Users\\Owner\\Documents\\Code\\Java\\tempo\\mp3\\" + filename + ".mp3");
+					File file = new File(Tempo.tempoFolderLocation + "\\mp3\\" + filename + ".mp3");
 					if(file.exists()) {
 						filename++;
 						continue;
@@ -211,11 +212,11 @@ class Download extends Thread{
 						check = false;
 					}
 				}
-				String filePath = "C:\\Users\\Owner\\Documents\\Code\\Java\\tempo\\mp3\\" + filename + ".mp3";
+				String filePath = Tempo.tempoFolderLocation + "\\mp3\\" + filename + ".mp3";
 				//sends commadn to donwlao dvideo link and save it with right filename when i want to play it back
 				try {
 					Thread.sleep(1000);
-					Process proc = Runtime.getRuntime().exec("cmd /c cd C:\\Users\\Owner\\Documents\\Code\\Java\\tempo && youtube-dl.exe " + link + " -o " + filePath);
+					Process proc = Runtime.getRuntime().exec("cmd /c cd " + Tempo.tempoFolderLocation + " && youtube-dl.exe " + link + " -o " + filePath);
 					//prints cmd results
 					
 					BufferedReader stdInput = new BufferedReader(new InputStreamReader(proc.getInputStream()));
@@ -225,21 +226,21 @@ class Download extends Thread{
 					}
 				
 					
-					File file = new File("C:\\Users\\Owner\\Documents\\Code\\Java\\tempo\\mp3\\" + filename + ".mp3");
+					File file = new File(Tempo.tempoFolderLocation + "\\mp3\\" + filename + ".mp3");
 					while(!file.exists()) {
 						continue;
 					}
 					//converts mp3 to wav format
-					Runtime.getRuntime().exec("cmd /c cd C:\\Users\\Owner\\Documents\\Code\\Java\\tempo\\ffmpeg && ffmpeg -i " + filePath + " C:\\Users\\Owner\\Documents\\Code\\Java\\tempo\\mp3\\" + filename + ".wav");
+					Runtime.getRuntime().exec("cmd /c cd " + Tempo.tempoFolderLocation + "\\ffmpeg && ffmpeg -i " + filePath + " " + Tempo.tempoFolderLocation + "\\mp3\\" + filename + ".wav");
 				
 					
-					File fileConvert = new File("C:\\Users\\Owner\\Documents\\Code\\Java\\tempo\\mp3\\" + filename + ".wav");
+					File fileConvert = new File(Tempo.tempoFolderLocation + "\\mp3\\" + filename + ".wav");
 					while(!fileConvert.exists()) {
 						continue;
 					}
 					Thread.sleep(1000);
 					Tempo.downloadQueue.remove(0);
-					Tempo.playQueue.add("C:\\Users\\Owner\\Documents\\Code\\Java\\tempo\\mp3\\" + filename + ".wav");
+					Tempo.playQueue.add(Tempo.tempoFolderLocation + "\\mp3\\" + filename + ".wav");
 					continue;
 				} catch (IOException | InterruptedException e) {
 					e.printStackTrace();
