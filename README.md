@@ -7,7 +7,7 @@ Prerequisites:
   - VB-CABLE Virtual Audio Device, https://vb-audio.com/Cable/
   - Two Playstation consoles
   - Two Paystation accounts
-  - Playstation Remote Play
+  - Playstation Remote Play, https://remoteplay.dl.playstation.net/remoteplay/lang/en/index.html
   - New gmail account with allow less secure apps on
 
 One Time Setup:
