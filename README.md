@@ -29,6 +29,8 @@ Playstation Setup:
   - Join the playstation party with the other playstation
   - You or any of your friends can now start sending the bot commands via email
 
+[![Setup Tutorial Video Here](https://img.youtube.com/vi/gCoqLMMf9dA/0.jpg)](https://www.youtube.com/watch?v=gCoqLMMf9dA)
+
 How To Use:
   - To send a command to the bot the command must be in the subject of the email
   - If the "help" command is sent to the bot it will reply with a help menu
