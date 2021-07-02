@@ -32,6 +32,7 @@ Playstation Setup:
 [![Setup Tutorial Video Here](https://img.youtube.com/vi/gCoqLMMf9dA/0.jpg)](https://www.youtube.com/watch?v=gCoqLMMf9dA)
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Video that outlines all steps of the setup.
 
 How To Use:
