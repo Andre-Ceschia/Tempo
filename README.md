@@ -16,7 +16,7 @@ One Time Setup:
   - Git clone this repository, https://github.com/Andre-Ceschia/Tempo
   - Open eclipse and create a new project
   - Uncheck "Use default location", click browse
-  - Navigate to the folder you have downloaded and click "Select Folder"
+  - Navigate to the folder you have just cloned and click "Select Folder"
   - Click "Next" then "Finish"
   - Replace the values of tempoFolderLocation, email and pass with thier respective values
 
