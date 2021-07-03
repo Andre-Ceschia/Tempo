@@ -1,5 +1,6 @@
 # Tempo
 Tempo is a music bot for PS4 and PS5, it is similar to many music bots used on Discord servers. 
+
 Video Setup Tutorial: https://www.youtube.com/watch?v=gCoqLMMf9dA
 
 Prerequisites:
