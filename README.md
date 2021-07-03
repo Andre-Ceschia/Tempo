@@ -1,5 +1,6 @@
 # Tempo
 Tempo is a music bot for PS4 and PS5, it is similar to many music bots used on Discord servers. 
+Video Setup Tutorial: https://www.youtube.com/watch?v=gCoqLMMf9dA
 
 Prerequisites:
   - Jar files, included in Jar folder
@@ -28,8 +29,6 @@ Playstation Setup:
   - In recording and playback disable your microphone and speaker and enable the virtual cable output and input
   - Join the playstation party with the other playstation
   - You or any of your friends can now start sending the bot commands via email
-
-Video Setup Tutorial: https://www.youtube.com/watch?v=gCoqLMMf9dA
 
 How To Use:
   - To send a command to the bot the command must be in the subject of the email
